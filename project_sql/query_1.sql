@@ -3,12 +3,13 @@ remote data analyst positions?
 */
 
 SELECT
-    job_title,
-    cd.name AS company_name
-    job_location,
-    job_schedule_type,
-    salary_year_avg,
-    job_posted_date
+    jpf.job_title,
+    cd.name AS company_name,
+    jpf.job_location,
+    jpf.job_schedule_type,
+    jpf.salary_year_avg,
+    jpf.job_posted_date,
+    DENSE_RANK() OVER(ORDER BY jpf.salary_year_avg DESC) AS Rank
 FROM 
     job_postings_fact jpf
 
@@ -21,6 +22,8 @@ WHERE
     salary_year_avg IS NOT NULL
 
 ORDER BY 
-    salary_year_avg DESC
+    Rank ASC
 
 LIMIT 10;
+
+/* By using rank the query is now able to be manipulated better */
