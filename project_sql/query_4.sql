@@ -1,0 +1,1 @@
+-- Query 4: What are the top paying skills in the dataset?

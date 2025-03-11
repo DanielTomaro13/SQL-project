@@ -1,0 +1,1 @@
+-- Query 2: What are the top paying jobs skillsets?
